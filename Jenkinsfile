@@ -1,8 +1,8 @@
 pipeline {
-   agent any
+   agen any
    tools {
-       maven 'apache-maven-3.5.4'
-	   jdk 'JDK'
+       maven 'Maven 3.5.4'
+	   jdk 'jdk8'
 	   }
 	   stages {
 	       stage ('Initialize'){
@@ -15,8 +15,13 @@ pipeline {
 			}
 			stage ('Build'){
 			    steps {
-				  echo 'this is a minimal pipeline.'
+				  sh 'mvn -Dmaven.test.failure.ignore=true install'
+				  }
+				  post {
+                success {
+                    junit 'target/surefire-reports/**/*.xml'
 				 }
 			}
 		}
+	}
 	}
