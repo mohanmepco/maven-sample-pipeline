@@ -1,11 +1,11 @@
 pipeline {
   agent any
   {
-    maven 'apache-maven-3.5.4'
-    jdk 'jdk8'
+    maven 'Maven-3.5.4'
+    jdk 'jdk8'
    }
-    stages {
-        stage ('Initialize') {
+  stages {
+    stage ('Initialize') {
             steps {
                 sh '''
                     echo "PATH = ${PATH}"
